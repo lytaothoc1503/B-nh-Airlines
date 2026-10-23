@@ -1,0 +1,7 @@
+private/
+__pycache__/
+.claude/
+.env
+.env.*
+!.env.example
+cloudflare-pages/
