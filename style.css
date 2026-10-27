@@ -187,14 +187,20 @@ html.motion-enabled .reveal{transition:none!important}
 
 /* Fuli blue-and-gold homepage refresh */
 :root{
- --blue:#0F2C59;
- --blue-deep:#0A2042;
- --blue-soft:#EAF0F8;
- --gold:#D4AF37;
- --gold-light:#F2D77E;
+ --vna-blue:#046C84;
+ --vna-blue-hover:#035669;
+ --vna-gold:#DBA314;
+ --vna-gold-hover:#b8850f;
+ --vna-light:#f4f8f9;
+ --vna-text-dark:#101820;
+ --blue:var(--vna-blue);
+ --blue-deep:var(--vna-text-dark);
+ --blue-soft:var(--vna-light);
+ --gold:var(--vna-gold);
+ --gold-light:var(--vna-gold-hover);
  --orange:var(--gold);
  --orange-dark:var(--blue);
- --ink:#172B46;
+ --ink:var(--vna-text-dark);
  --muted:#5C6E84;
  --border:#D9E2EF;
  --cream:#F5F7FB;
@@ -305,6 +311,79 @@ input[type=radio],input[type=checkbox]{accent-color:var(--blue)}
  .hero-art{min-height:135px;height:135px}
  .destination-grid{grid-template-columns:1fr}
  .destination-art{height:150px}
+}
+
+/* Keep primary navigation available on small screens and clarify action states. */
+.header-row nav a{
+ position:relative;
+ padding:10px 0;
+ color:var(--vna-blue);
+ transition:color .18s ease;
+}
+.header-row nav a:hover,.header-row nav a:focus-visible{color:var(--vna-blue-hover)}
+.header-row nav a:after{
+ position:absolute;
+ right:0;
+ bottom:3px;
+ left:0;
+ height:2px;
+ content:"";
+ background:var(--gold);
+ transform:scaleX(0);
+ transform-origin:left;
+ transition:transform .2s ease;
+}
+.header-row nav a:hover:after,.header-row nav a:focus-visible:after{transform:scaleX(1)}
+.button{
+ transition:transform .18s var(--ease),background .18s ease,color .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.button-primary:hover{
+ transform:translateY(-2px);
+ box-shadow:0 10px 22px #0f2c592b;
+}
+.button-soft{
+ border:1px solid var(--vna-blue);
+ background:transparent;
+ color:var(--vna-blue);
+ transition:transform .18s var(--ease),background .18s ease,color .18s ease,border-color .18s ease;
+}
+.button-soft:hover{
+ transform:translateY(-2px);
+ border-color:var(--vna-gold);
+ background:var(--vna-light);
+ color:var(--vna-blue-hover);
+}
+.button>span[aria-hidden=true]{transition:transform .18s ease}
+.button:hover>span[aria-hidden=true]{transform:translate(3px,-1px)}
+@media(max-width:720px){
+ html{scroll-padding-top:120px}
+ .header-row{
+  display:grid;
+  grid-template-areas:"brand actions" "nav nav";
+  grid-template-columns:minmax(0,1fr) auto;
+  min-height:0;
+  gap:5px 12px;
+  padding:10px 0 8px;
+ }
+ .header-row .brand{grid-area:brand}
+ .header-row nav{
+  display:flex;
+  grid-area:nav;
+  justify-content:space-between;
+  gap:18px;
+  overflow-x:auto;
+  border-top:1px solid #dbe3ee;
+  padding-top:4px;
+  scrollbar-width:none;
+  white-space:nowrap;
+ }
+ .header-row nav::-webkit-scrollbar{display:none}
+ .header-row nav a{padding:5px 0;font-size:11px}
+ .header-row .header-actions{grid-area:actions}
+}
+@media(max-width:420px){
+ .header-row nav{gap:12px}
+ .header-row nav a{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
