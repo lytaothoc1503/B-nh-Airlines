@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 
 $source = $PSScriptRoot
 $output = Join-Path $source "cloudflare-pages"
-$assets = @("index.html", "style.css", "anime.umd.min.js", "app.js", "_headers")
+$assets = @("index.html", "favicon.svg", "style.css", "anime.umd.min.js", "app.js", "_headers")
 
 if (-not (Test-Path -LiteralPath $output)) {
     New-Item -ItemType Directory -Path $output | Out-Null

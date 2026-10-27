@@ -18,7 +18,7 @@ Không cần Chrome DevTools MCP Relay hoặc Live Server. Để gửi yêu cầ
 ## Triển khai giao diện tĩnh lên Cloudflare Pages
 
 1. Trong PowerShell, từ thư mục `bay-viet`, chạy `.\prepare-cloudflare-pages.ps1`.
-   Lệnh tạo `cloudflare-pages` chỉ với `index.html`, `style.css`, `anime.umd.min.js`,
+   Lệnh tạo `cloudflare-pages` chỉ với `index.html`, `favicon.svg`, `style.css`, `anime.umd.min.js`,
    `app.js` và `_headers`;
    không tải mã Python, SQLite, tài liệu hoặc dữ liệu riêng tư lên Cloudflare.
 2. Đăng nhập Cloudflare Dashboard, vào **Workers & Pages** > **Create application** > **Pages** > **Upload assets**.
@@ -70,6 +70,7 @@ Chưa có trang quản trị web: cố ý không công khai dữ liệu liên h�
 ## 4. Tệp dự án
 
 - index.html: bố cục trang và biểu mẫu.
+- favicon.svg: biểu tượng trình duyệt của thương hiệu.
 - style.css: màu sắc, responsive, hiệu ứng và reduced motion.
 - app.js: tìm kiếm minh họa, hiệu ứng anime.js, popup và gửi yêu cầu cùng nguồn.
 - anime.umd.min.js: thư viện hiệu ứng được lưu cục bộ, không tải từ CDN.

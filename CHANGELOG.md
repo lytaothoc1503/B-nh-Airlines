@@ -1,7 +1,7 @@
 # Thay đổi
 ## 1.1
 Nâng cấp chuyển động giao diện bằng anime.js đóng gói cục bộ; hỗ trợ tùy chọn giảm chuyển động.
-Cho phép thư viện qua whitelist máy chủ và staging Cloudflare Pages; tinh chỉnh mô tả, CTA điện thoại, giữ rõ giá/chuyến bay minh họa.
+Cho phép thư viện và favicon qua whitelist máy chủ/staging Cloudflare Pages; tinh chỉnh mô tả, CTA điện thoại, giữ rõ giá/chuyến bay minh họa.
 Không bổ sung thanh toán giả hoặc tuyên bố có API đặt chỗ thật.
 
 ## 1.0.1

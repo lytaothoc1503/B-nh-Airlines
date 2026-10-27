@@ -21,6 +21,7 @@ AIRPORTS = {"HAN", "SGN", "DAD"}
 PUBLIC = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/index.html": ("index.html", "text/html; charset=utf-8"),
+    "/favicon.svg": ("favicon.svg", "image/svg+xml"),
     "/style.css": ("style.css", "text/css; charset=utf-8"),
     "/anime.umd.min.js": ("anime.umd.min.js", "text/javascript; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
