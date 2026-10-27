@@ -22,6 +22,7 @@ PUBLIC = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/index.html": ("index.html", "text/html; charset=utf-8"),
     "/style.css": ("style.css", "text/css; charset=utf-8"),
+    "/anime.umd.min.js": ("anime.umd.min.js", "text/javascript; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
 }
 RATE_LOCK = threading.Lock()

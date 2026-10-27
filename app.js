@@ -19,15 +19,15 @@ const brand = {
   serviceKey: "bay-cung-banh",
 };
 function applyBrand() {
-  document.title = `Website hãng hàng không ${brand.service} | ${brand.primary}`;
+  document.title = `${brand.primary} — ${brand.service}`;
   document.querySelector('meta[name="description"]').content =
-    `Website hãng hàng không ${brand.service}, thương hiệu ${brand.primary}.`;
+    `Dự án giao diện tìm chuyến bay minh họa ${brand.service}, thương hiệu ${brand.primary}. Giá và lịch trình chưa phải dữ liệu đặt chỗ thật.`;
   const headerBrand = document.querySelector("header .brand > span:last-child");
   headerBrand.childNodes[0].nodeValue = brand.primary.toUpperCase();
   headerBrand.querySelector("small").textContent = brand.service.toUpperCase();
   document.querySelector("footer .brand").textContent = brand.primary.toUpperCase();
   document.querySelector("#about p:not(.eyebrow)").textContent =
-    `Website hãng hàng không ${brand.service} mang thương hiệu ${brand.primary}, ưu tiên thao tác rõ ràng và trải nghiệm trên điện thoại.`;
+    `Dự án giao diện tìm chuyến bay minh họa ${brand.service}, thương hiệu ${brand.primary}, ưu tiên thao tác rõ ràng và trải nghiệm trên điện thoại.`;
   document.querySelector("#promo-dialog .eyebrow").textContent =
     `${brand.primary.toUpperCase()} / ${brand.service.toUpperCase()}`;
   document.querySelector("#promo-description").textContent =
@@ -82,6 +82,7 @@ function renderSearch(){
  renderList("outbound-list",search.from,search.to,search.departure,"outbound");
  const round=search.trip==="roundtrip";$("inbound-section").hidden=!round;$("inbound-list").replaceChildren();
  if(round)renderList("inbound-list",search.to,search.from,search.returnDate,"inbound");
+ if(window.anime&&!matchMedia("(prefers-reduced-motion: reduce)").matches)window.anime.animate(".flight-row",{opacity:[0,1],translateY:[12,0],delay:window.anime.stagger(65),duration:420,ease:"outQuad"});
  $("result-caption").textContent=`${names[search.from]} → ${names[search.to]} · ${round?"Khứ hồi":"Một chiều"} · ${search.passengers} người lớn · ${dateLabel(search.departure)}`;
  $("results").hidden=false;
 }
@@ -100,6 +101,10 @@ $("use-selection").addEventListener("click",()=>{
 });
 document.querySelectorAll("[data-destination]").forEach(button=>button.addEventListener("click",()=>{const target=button.dataset.destination;if($("origin").value===target)$("origin").value=target==="HAN"?"SGN":"HAN";$("destination").value=target;invalidate();go("search");}));
 $("floating-search").addEventListener("click",()=>go("search"));
+if("IntersectionObserver" in window){
+ const searchCtaObserver=new IntersectionObserver(([entry])=>{$("floating-search").hidden=entry.isIntersecting;},{threshold:.1});
+ searchCtaObserver.observe($("search"));
+}
 // Thông báo chỉ lưu tùy chọn trên trình duyệt, không gửi ra ngoài.
 const dialog=$("promo-dialog");const key=`${brand.serviceKey}-promo-dismissed`;let promoTimer;
 function openPromo(){clearTimeout(promoTimer);if(!dialog.open){dialog.showModal();document.body.classList.add("modal-open");}}
@@ -108,8 +113,16 @@ dialog.addEventListener("close",()=>document.body.classList.remove("modal-open")
 $("close-promo").addEventListener("click",closePromo);$("open-promo").addEventListener("click",openPromo);$("footer-promo").addEventListener("click",openPromo);$("promo-action").addEventListener("click",()=>{closePromo();go("search");});
 let hidden=false;try{hidden=sessionStorage.getItem(key)==="yes";}catch{}
 if(!hidden)promoTimer=setTimeout(()=>{const el=document.activeElement;if(el===document.body||!el)openPromo();},1300);
-// Chỉ ẩn phần reveal nếu IntersectionObserver sẵn sàng.
-if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target);}}),{threshold:.08});document.documentElement.classList.add("motion-enabled");document.querySelectorAll(".reveal").forEach(e=>observer.observe(e));}
+if(window.anime&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
+ const {animate,stagger}=window.anime;
+ animate(".hero .eyebrow, .hero h1, .hero-copy, .hero .button, .hero-notes",{opacity:[0,1],translateY:[16,0],delay:stagger(75),duration:560,ease:"outQuad"});
+ animate(".hero-art .sun, .hero-art .mountain, .hero-art .sea, .hero-art .coast, .hero-art .art-plane",{opacity:[0,1],translateY:[12,0],delay:stagger(90),duration:760,ease:"outQuad"});
+ if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");animate(entry.target,{opacity:[0,1],translateY:[18,0],duration:520,ease:"outQuad"});observer.unobserve(entry.target);}}),{threshold:.08});
+  document.documentElement.classList.add("motion-enabled");
+  document.querySelectorAll(".reveal").forEach(e=>observer.observe(e));
+ }
+}
 // Lưu yêu cầu thực trên máy chủ cùng nguồn. Không có endpoint ngoài.
 async function checkServer(){
  const disableRequestForm=()=>{$("request-form").querySelectorAll("input,select,button").forEach(control=>{control.disabled=true;});};

@@ -3,9 +3,9 @@
 ## 1. Mở giao diện ngay
 
 Giải nén ZIP. Mở thư mục bay-viet trong VS Code bằng File > Open Folder.
-Nhấp đúp index.html để xem giao diện. CSS và JavaScript phải nằm cùng thư mục.
+Nhấp đúp index.html để xem giao diện. CSS, JavaScript và anime.js được đóng gói cùng dự án.
 Chế độ này xem được popup, tìm chuyến và chọn hành trình; không lưu được yêu cầu.
-Không cần npm, không cần cài skill, không cần thư viện ngoài.
+Không cần npm hoặc kết nối dịch vụ bên ngoài; hiệu ứng anime.js đã nằm trong dự án.
 
 ## Extensions trong VS Code
 
@@ -18,7 +18,8 @@ Không cần Chrome DevTools MCP Relay hoặc Live Server. Để gửi yêu cầ
 ## Triển khai giao diện tĩnh lên Cloudflare Pages
 
 1. Trong PowerShell, từ thư mục `bay-viet`, chạy `.\prepare-cloudflare-pages.ps1`.
-   Lệnh tạo `cloudflare-pages` chỉ với `index.html`, `style.css`, `app.js` và `_headers`;
+   Lệnh tạo `cloudflare-pages` chỉ với `index.html`, `style.css`, `anime.umd.min.js`,
+   `app.js` và `_headers`;
    không tải mã Python, SQLite, tài liệu hoặc dữ liệu riêng tư lên Cloudflare.
 2. Đăng nhập Cloudflare Dashboard, vào **Workers & Pages** > **Create application** > **Pages** > **Upload assets**.
 3. Đặt tên dự án và tải thư mục `cloudflare-pages` vừa tạo lên. Không tải thư mục dự án gốc.
@@ -70,8 +71,9 @@ Chưa có trang quản trị web: cố ý không công khai dữ liệu liên h�
 
 - index.html: bố cục trang và biểu mẫu.
 - style.css: màu sắc, responsive, hiệu ứng và reduced motion.
-- app.js: tìm kiếm giả lập, popup và gửi yêu cầu cùng nguồn.
-- server.py: máy chủ cục bộ, kiểm tra dữ liệu và lưu SQLite.
+- app.js: tìm kiếm minh họa, hiệu ứng anime.js, popup và gửi yêu cầu cùng nguồn.
+- anime.umd.min.js: thư viện hiệu ứng được lưu cục bộ, không tải từ CDN.
+- server.py: máy chủ cục bộ, kiểm tra dữ liệu, lưu SQLite và chỉ phục vụ các tài nguyên công khai được cho phép.
 - _headers: security headers cho Cloudflare Pages.
 - prepare-cloudflare-pages.ps1: tạo thư mục deploy chỉ gồm các tài nguyên công khai đã cho phép.
 - docs/PROJECT_CONTEXT.md: mục tiêu và quy tắc dự án.
