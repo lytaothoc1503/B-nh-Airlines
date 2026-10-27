@@ -54,7 +54,12 @@ const today=localDate(); const later=new Date(); later.setDate(later.getDate()+3
 $("departure").value=today; $("departure").min=today; $("return-date").value=localDate(later);
 $("request-departure").min=today; $("request-departure").value=today; $("request-return").min=today;
 function syncReturn(){const round=trip()==="roundtrip"; const min=$("departure").value||localDate(); $("return-field").hidden=!round; $("return-date").disabled=!round; $("return-date").required=round; $("return-date").min=min; if(!$("return-date").value||$("return-date").value<min) $("return-date").value=min;}
-function invalidate(){search=null; selected={outbound:null,inbound:null}; $("results").hidden=true; $("selection").hidden=true; $("search-error").hidden=true;}
+function invalidate(){
+ search=null;selected={outbound:null,inbound:null};
+ $("results").querySelectorAll(".flight-row").forEach(row=>row.classList.remove("selected"));
+ $("results").querySelectorAll(".price-button").forEach(button=>button.setAttribute("aria-pressed","false"));
+ $("results").hidden=true;$("selection").hidden=true;$("search-error").hidden=true;
+}
 $("search-form").addEventListener("input",invalidate);
 $("search-form").addEventListener("change",()=>{syncReturn();invalidate();});
 $("swap").addEventListener("click",()=>{const previous=$("origin").value; $("origin").value=$("destination").value; $("destination").value=previous; invalidate();});
@@ -148,8 +153,16 @@ $("destination-search").addEventListener("click",()=>{
 });
 $("floating-search").addEventListener("click",()=>go("search"));
 if("IntersectionObserver" in window){
- const searchCtaObserver=new IntersectionObserver(([entry])=>{$("floating-search").hidden=entry.isIntersecting;},{threshold:.1});
+ const visibleCtaSections=new Set();
+ const searchCtaObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting)visibleCtaSections.add(entry.target);
+   else visibleCtaSections.delete(entry.target);
+  });
+  $("floating-search").hidden=visibleCtaSections.size>0;
+ },{threshold:.1});
  searchCtaObserver.observe($("search"));
+ searchCtaObserver.observe($("destinations"));
 }
 // Thông báo chỉ lưu tùy chọn trên trình duyệt, không gửi ra ngoài.
 const dialog=$("promo-dialog");const key=`${brand.serviceKey}-promo-dismissed`;let promoTimer;
