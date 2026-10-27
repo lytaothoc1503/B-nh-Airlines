@@ -37,3 +37,19 @@ Chạy `server.py` thật trên máy người dùng, thử bằng PowerShell `In
 - NOT RUN graphical browser, mobile device, Windows, accessibility audit, security audit
 
 Các kiểm tra HTTP dùng cơ sở dữ liệu tạm, không đóng gói dữ liệu liên hệ. Không phải chứng nhận production.
+
+## Kiểm tra tích hợp giao diện 1.2
+
+- PASS `node --check app.js`
+- PASS Phân tích cú pháp Python; kiểm tra ID HTML duy nhất và tham chiếu ID trong JavaScript.
+- PASS Hàm kiểm tra backend chấp nhận cả sáu mã HAN, SGN, DAD, PQC, CXR, DLI.
+- PASS Chrome desktop 1365×900: tiêu đề/hero hiển thị đúng, đủ sáu thẻ, không tràn ngang.
+- PASS Hộp thoại điểm đến Nha Trang → chọn tuyến → tìm chuyến; bốn chuyến mẫu được hiển thị.
+- PASS Chọn chuyến và xem thông tin chi tiết; khứ hồi, chọn chiều về và điền hành trình vào biểu mẫu tư vấn.
+- PASS Mã `BANHFULI10`: giá mẫu 890.000đ hiển thị còn 801.000đ; tổng khứ hồi được tính theo giá mẫu đã giảm.
+- PASS Popup mở thủ công, đóng bằng X/Escape và lưu tùy chọn phiên trong sessionStorage.
+- PASS Chrome mobile 390×844: không tràn ngang; hero/thẻ điểm đến một cột; nút tìm chuyến hiển thị.
+- PASS Không có lỗi JavaScript trong console.
+- NOT RUN Thiết bị điện thoại thật, hệ thống hãng/đặt chỗ thật và kiểm thử bảo mật production.
+
+Các tương tác UI được kiểm tra trên Chrome cục bộ với dữ liệu mẫu; không gửi biểu mẫu liên hệ và không ghi dữ liệu thử vào SQLite.

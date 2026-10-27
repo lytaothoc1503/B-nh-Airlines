@@ -2,7 +2,7 @@
 
 ## 1. Mở giao diện ngay
 
-Giải nén ZIP. Mở thư mục bay-viet trong VS Code bằng File > Open Folder.
+Mở thư mục `B-nh-Airlines` trong VS Code bằng File > Open Folder.
 Nhấp đúp index.html để xem giao diện. CSS, JavaScript và anime.js được đóng gói cùng dự án.
 Chế độ này xem được popup, tìm chuyến và chọn hành trình; không lưu được yêu cầu.
 Không cần npm hoặc kết nối dịch vụ bên ngoài; hiệu ứng anime.js đã nằm trong dự án.
@@ -17,7 +17,7 @@ Không cần Chrome DevTools MCP Relay hoặc Live Server. Để gửi yêu cầ
 
 ## Triển khai giao diện tĩnh lên Cloudflare Pages
 
-1. Trong PowerShell, từ thư mục `bay-viet`, chạy `.\prepare-cloudflare-pages.ps1`.
+1. Trong PowerShell, từ thư mục `B-nh-Airlines`, chạy `.\prepare-cloudflare-pages.ps1`.
    Lệnh tạo `cloudflare-pages` chỉ với `index.html`, `favicon.svg`, `style.css`, `anime.umd.min.js`,
    `app.js` và `_headers`;
    không tải mã Python, SQLite, tài liệu hoặc dữ liệu riêng tư lên Cloudflare.
@@ -87,14 +87,14 @@ Chưa có trang quản trị web: cố ý không công khai dữ liệu liên h�
 - Tên, giới thiệu, popup: sửa index.html.
 - Màu: sửa biến ở đầu style.css.
 - Chuyến mẫu: sửa templates trong app.js.
-- Popup hiện sau khoảng 1,3 giây nếu người dùng chưa tương tác với phần tử khác.
-- Đánh dấu không hiện lại rồi đóng: lưu trong sessionStorage, không gửi lên máy chủ.
-- Không có giảm giá thật: không dựng mã coupon hay đồng hồ khuyến mãi giả.
+- Popup ưu đãi hiện sau khoảng 1,3 giây nếu người dùng chưa tương tác với phần tử khác.
+- Mã `BANHFULI10` giảm 10% trên giá chuyến bay mẫu tại trình duyệt; đây chỉ là phép tính minh họa, không giảm giá/thu tiền thật và không gửi mã hay giá vào API.
+- Đóng popup bằng nút X hoặc Escape; tùy chọn không hiện lại trong phiên được lưu trong sessionStorage, không gửi lên máy chủ.
 - Ảnh minh họa được dựng bằng CSS, không tải từ website khác.
 
 ## 6. Phạm vi và giới hạn
 
-Tìm kiếm chỉ gồm 3 sân bay và người lớn; số lượng 1–9 là quy ước của ứng dụng.
+Tìm kiếm gồm 6 mã sân bay nội địa (HAN, SGN, DAD, PQC, CXR, DLI) và người lớn; số lượng 1–9 là quy ước của ứng dụng.
 Các hãng, mã chuyến, giờ bay và giá đều giả lập; không có tồn chỗ thật.
 Bộ dữ liệu giờ bay giống nhau giữa các tuyến để kiểm tra bố cục, không mô tả thời gian bay thật.
 Chuyến khứ hồi cùng ngày được kiểm tra giờ về không trước giờ đến chiều đi; chưa có thời gian đệm.

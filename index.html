@@ -1,55 +1,303 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Dự án giao diện tìm chuyến bay minh họa Bảnh Fuli. Giá và lịch trình chưa phải dữ liệu đặt chỗ thật.">
-<title>Bảnh Fuli — Bay cùng Bảnh · Bay cùng Bố</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css"><script src="anime.umd.min.js" defer></script><script src="app.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Khám phá sáu điểm đến và tìm chuyến bay minh họa cùng Bảnh Fuli. Giá và lịch trình chưa phải dữ liệu đặt chỗ thật.">
+  <meta name="theme-color" content="#17343e">
+  <title>Bảnh Fuli — Hành trình mới, cảm hứng mới</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="anime.umd.min.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Đến nội dung chính</a>
-<div class="topline">THIẾT KẾ THỬ NGHIỆM <span>Giá và lịch bay minh họa · Chưa bán vé trực tuyến</span></div>
-<header class="header"><div class="wrap header-row">
-<a class="brand" href="#" aria-label="Bảnh Fuli, trang chủ"><span class="brand-icon" aria-hidden="true">✈</span><span>BAY VIỆT<small>KHỞI ĐẦU MỌI HÀNH TRÌNH</small></span></a>
-<nav aria-label="Điều hướng chính"><a href="#search">Tìm chuyến bay</a><a href="#destinations">Điểm đến</a><a href="#about">Giới thiệu</a></nav>
-<button class="button button-soft" id="open-promo" type="button">Thông báo & ưu đãi</button>
-</div></header>
-<main id="main">
-<section class="hero"><div class="wrap hero-grid"><div>
-<p class="eyebrow">MỖI CHUYẾN ĐI, MỘT CÂU CHUYỆN</p>
-<h1>Hành trình mới.<br><span>Cảm hứng mới.</span></h1>
-<p class="hero-copy">Từ nhịp sống thành phố đến những ngày thảnh thơi bên biển. Chọn điểm đến, tìm hành trình và bắt đầu kế hoạch của riêng bạn.</p>
-<a class="button button-primary" href="#search">Khám phá chuyến bay <span aria-hidden="true">↗</span></a>
-<div class="hero-notes"><span>01 / Nội địa</span><span>02 / Một chiều & khứ hồi</span><span>03 / Hỗ trợ tìm vé</span></div>
-</div><div class="hero-art" aria-label="Minh họa phong cảnh bờ biển bằng đồ họa">
-<div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="mountain m1"></div><div class="mountain m2"></div><div class="sea"></div><div class="coast"></div><span class="art-plane" aria-hidden="true">✈</span>
-<div class="art-caption"><span>MỘT CHÚT CẢM HỨNG</span><strong>Đi để khám phá.</strong><small>Minh họa đồ họa · Không sử dụng ảnh bên ngoài</small></div>
-</div></div></section>
-<div class="wrap">
-<section class="search-panel" id="search" aria-labelledby="search-title">
-<div class="section-top"><div><p class="eyebrow">BẠN MUỐN ĐI ĐÂU?</p><h2 id="search-title">Tìm chuyến bay của bạn</h2></div><span class="badge">Dữ liệu chuyến bay mẫu</span></div>
-<form id="search-form"><fieldset class="trip-options"><legend class="sr-only">Loại hành trình</legend><label><input type="radio" name="trip" value="oneway" checked> Một chiều</label><label><input type="radio" name="trip" value="roundtrip"> Khứ hồi</label></fieldset>
-<div class="search-grid"><div class="field"><label for="origin">Điểm đi</label><select id="origin" required><option value="HAN">Hà Nội · HAN</option><option value="SGN">TP. Hồ Chí Minh · SGN</option><option value="DAD">Đà Nẵng · DAD</option></select></div>
-<button type="button" id="swap" class="swap" aria-label="Đổi điểm đi và điểm đến">⇄</button>
-<div class="field"><label for="destination">Điểm đến</label><select id="destination" required><option value="SGN">TP. Hồ Chí Minh · SGN</option><option value="HAN">Hà Nội · HAN</option><option value="DAD">Đà Nẵng · DAD</option></select></div>
-<div class="field"><label for="departure">Ngày đi</label><input id="departure" type="date" required></div>
-<div class="field" id="return-field" hidden><label for="return-date">Ngày về</label><input id="return-date" type="date" disabled></div>
-<div class="field"><label for="passengers">Người lớn</label><select id="passengers"><option value="1">1 người</option><option value="2">2 người</option><option value="3">3 người</option><option value="4">4 người</option><option value="5">5 người</option><option value="6">6 người</option><option value="7">7 người</option><option value="8">8 người</option><option value="9">9 người</option></select></div></div>
-<div class="search-footer"><p class="muted">Chọn hành trình để xem các phương án minh họa. Chưa kết nối giá hoặc tồn chỗ của hãng.</p><button class="button button-primary" type="submit">Tìm chuyến bay <span aria-hidden="true">→</span></button></div><p id="search-error" class="error" role="alert" hidden></p></form>
-</section>
-<section class="benefits reveal" aria-label="Trải nghiệm tìm kiếm"><article><span>01</span><div><h3>Tìm kiếm gọn gàng</h3><p>Điểm đi, điểm đến và lịch trình trong một khung.</p></div></article><article><span>02</span><div><h3>So sánh rõ ràng</h3><p>Giờ bay và giá mẫu được trình bày nhất quán.</p></div></article><article><span>03</span><div><h3>Chủ động lựa chọn</h3><p>Chọn chuyến phù hợp rồi gửi yêu cầu hỗ trợ.</p></div></article></section>
-<section class="section" id="results" aria-labelledby="results-title"><div class="section-top"><div><p class="eyebrow">LÊN KẾ HOẠCH CHO CHUYẾN ĐI</p><h2 id="results-title">Các chuyến bay tham khảo</h2></div><div class="sort-field"><label for="sort">Sắp xếp</label><select id="sort"><option value="price">Giá thấp trước</option><option value="time">Giờ đi sớm trước</option></select></div></div><p id="result-caption" class="muted"></p>
-<h3 class="leg-title">Chiều đi</h3><div id="outbound-list" class="flight-list"></div><div id="inbound-section" hidden><h3 class="leg-title">Chiều về</h3><div id="inbound-list" class="flight-list"></div></div>
-<p class="muted small">Giá minh họa/người/chặng, gồm thuế phí giả lập; chưa gồm dịch vụ bổ sung. Tất cả tên hãng, mã chuyến và giờ bay là giả lập.</p>
-<div id="selection" class="selection" hidden><div><h3>Hành trình đã chọn</h3><div id="selection-details"></div><p id="selection-total" class="selection-total"></p><p class="muted small">Chọn chuyến chưa tạo đơn, giữ chỗ hoặc xác nhận giá.</p></div><button id="use-selection" class="button button-primary" type="button">Gửi yêu cầu hành trình này →</button></div></section>
-<section class="section reveal" id="destinations"><div class="section-top"><div><p class="eyebrow">MỘT VÀI GỢI Ý CHO BẠN</p><h2>Bạn muốn khám phá nơi nào?</h2></div><span class="muted">Ba điểm đến, nhiều trải nghiệm</span></div><div class="destination-grid"><button class="destination-card city-han" data-destination="HAN" type="button"><span class="destination-art" aria-hidden="true">HÀ NỘI</span><span class="destination-info"><small>NÉT ĐẸP TRẦM LẮNG</small><strong>Hà Nội <span aria-hidden="true">↗</span></strong><span>Chọn làm điểm đến</span></span></button><button class="destination-card city-dad" data-destination="DAD" type="button"><span class="destination-art" aria-hidden="true">ĐÀ NẴNG</span><span class="destination-info"><small>HẸN VỚI BIỂN XANH</small><strong>Đà Nẵng <span aria-hidden="true">↗</span></strong><span>Chọn làm điểm đến</span></span></button><button class="destination-card city-sgn" data-destination="SGN" type="button"><span class="destination-art" aria-hidden="true">SÀI GÒN</span><span class="destination-info"><small>NHỊP SỐNG SÔI ĐỘNG</small><strong>TP. Hồ Chí Minh <span aria-hidden="true">↗</span></strong><span>Chọn làm điểm đến</span></span></button></div></section>
-<section class="section request-panel reveal" id="ticket-request"><div><p class="eyebrow">CHÚNG TA BẮT ĐẦU TỪ ĐÂY</p><h2>Gửi yêu cầu tìm vé</h2><p class="muted">Biểu mẫu này lưu yêu cầu vào máy chủ khi chạy bằng Python. Gửi yêu cầu chưa phải đặt vé. Chưa có email hoặc tin nhắn tự động gửi tới người quản lý.</p><p id="server-status" class="server-status" role="status">Đang kiểm tra kết nối máy chủ…</p><p class="muted small">Chỉ cung cấp tên và số điện thoại cần thiết để liên hệ. Không gửi căn cước, hộ chiếu hoặc thông tin thẻ.</p></div>
-<form id="request-form"><div class="request-grid"><div class="field"><label for="request-name">Họ tên</label><input id="request-name" name="name" autocomplete="name" minlength="2" maxlength="100" required></div><div class="field"><label for="request-phone">Số điện thoại</label><input id="request-phone" name="phone" type="tel" autocomplete="tel" maxlength="25" required></div><div class="field"><label for="request-origin">Điểm đi</label><select id="request-origin" name="origin"><option value="HAN">Hà Nội</option><option value="SGN">TP. Hồ Chí Minh</option><option value="DAD">Đà Nẵng</option></select></div><div class="field"><label for="request-destination">Điểm đến</label><select id="request-destination" name="destination"><option value="SGN">TP. Hồ Chí Minh</option><option value="HAN">Hà Nội</option><option value="DAD">Đà Nẵng</option></select></div><div class="field"><label for="request-departure">Ngày đi</label><input id="request-departure" name="departureDate" type="date" required></div><div class="field"><label for="request-return">Ngày về (nếu khứ hồi)</label><input id="request-return" name="returnDate" type="date"></div><div class="field"><label for="request-passengers">Số người lớn</label><input id="request-passengers" name="passengers" type="number" min="1" max="9" step="1" value="1" required></div></div><label class="consent"><input name="consent" type="checkbox" required><span>Tôi đồng ý lưu thông tin trên vào máy chủ để xử lý và liên hệ về yêu cầu tìm vé này.</span></label><button id="request-submit" class="button button-primary" type="submit" disabled>Gửi yêu cầu</button><p id="request-status" role="status" aria-live="polite"></p></form></section>
-<section class="section about reveal" id="about"><div><p class="eyebrow">VỀ DỰ ÁN</p><h2>Thiết kế cho những<br>hành trình phía trước.</h2></div><div><p>Bay Việt là tên làm việc của dự án website vé máy bay nội địa. Giao diện ưu tiên sự rõ ràng, thao tác đơn giản và trải nghiệm trên điện thoại.</p><p class="muted">Phiên bản này có tìm kiếm chuyến bay mẫu và lưu yêu cầu tư vấn. Chưa có tài khoản, thanh toán, chọn ghế, xuất vé hoặc kết nối hãng hàng không. Không có quảng cáo, tracking hay thư viện tải từ bên ngoài.</p></div></section>
-</div></main>
-<footer class="footer"><div class="wrap"><a class="brand" href="#">BAY VIỆT</a><p>Khởi đầu mọi hành trình.</p><div class="footer-bottom"><span>Tên thương hiệu tạm thời · Phiên bản phát triển 1.0</span><a href="#ticket-request">Gửi yêu cầu</a><button class="link-button" id="footer-promo" type="button">Xem thông báo</button></div></div></footer>
-<button id="floating-search" class="button button-primary floating-search" type="button">Tìm chuyến bay ↑</button>
-<p class="sr-only" id="live-status" role="status" aria-live="polite"></p>
-<dialog id="promo-dialog" aria-labelledby="promo-title" aria-describedby="promo-description"><div class="promo-visual"><button class="close-dialog" id="close-promo" type="button" aria-label="Đóng thông báo" autofocus>×</button><span class="eyebrow">BAY VIỆT / THÔNG BÁO</span><span class="promo-plane" aria-hidden="true">✈</span><h2 id="promo-title">Một hành trình mới<br>đang chờ bạn.</h2></div><div class="promo-body"><p id="promo-description">Chào mừng bạn đến với Bay Việt. Khám phá giao diện tìm chuyến bay nội địa và gửi nhu cầu để lưu yêu cầu tìm vé.</p><div class="promo-note">Khu vực ưu đãi đã sẵn sàng về giao diện. Hiện chưa có chương trình giảm giá thực tế hoặc mã khuyến mãi đang áp dụng.</div><button id="promo-action" class="button button-primary" type="button">Khám phá hành trình →</button><label class="consent"><input id="hide-promo" type="checkbox"><span>Không tự hiện lại trong phiên này</span></label></div></dialog>
-</body></html>
+  <a class="skip" href="#main">Đến nội dung chính</a>
+  <div class="topline">
+    <span class="topline__label">BẢNH FULI · MÔ PHỎNG THỰC HÀNH</span>
+    <span>Giá và lịch bay minh họa · Chưa bán vé trực tuyến</span>
+  </div>
+
+  <header class="header">
+    <div class="wrap header-row">
+      <a class="brand" href="#main" aria-label="Bảnh Fuli, về đầu trang">
+        <span class="brand-icon" aria-hidden="true">B.</span>
+        <span>BẢNH FULI<small>Bay cùng Bảnh · Bay cùng Bố</small></span>
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#search">Tìm chuyến bay</a>
+        <a href="#destinations">Điểm đến</a>
+        <a href="#about">Về dự án</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button button-soft" href="#search">Lên lịch đi <span aria-hidden="true">↗</span></a>
+        <button class="header-promo" id="open-promo" type="button">Ưu đãi <span aria-hidden="true">✳</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span>MỖI CHUYẾN ĐI, MỘT CÂU CHUYỆN</p>
+          <h1 id="hero-title">Hành trình mới.<br><em>Cảm hứng mới.</em></h1>
+          <p class="hero-intro">Chọn một miền đất mới, xem các chuyến bay minh họa và bắt đầu lên kế hoạch theo cách của bạn.</p>
+          <a class="button button-primary" href="#search">Tìm chuyến bay <span aria-hidden="true">↘</span></a>
+          <div class="hero-notes" aria-label="Thông tin về hành trình">
+            <span>Sáu điểm đến nội địa</span>
+            <span>Một chiều &amp; khứ hồi</span>
+            <span>Giá minh họa</span>
+          </div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Minh họa núi đá và ruộng bậc thang lúc bình minh ở Ninh Bình">
+          <span class="hero-art__sun"></span>
+          <span class="hero-art__cloud hero-art__cloud--one"></span>
+          <span class="hero-art__cloud hero-art__cloud--two"></span>
+          <span class="hero-art__ridge hero-art__ridge--back"></span>
+          <span class="hero-art__ridge hero-art__ridge--front"></span>
+          <span class="hero-art__water"></span>
+          <span class="hero-art__route" aria-hidden="true">✦ &nbsp; NINH BÌNH, VIỆT NAM</span>
+          <span class="hero-art__stamp" aria-hidden="true">ĐI<br>THÔI!</span>
+          <span class="hero-art__caption"><span>MINH HỌA ĐỒ HỌA · KHÔNG DÙNG ẢNH NGOÀI</span><span>CHUYẾN ĐI ĐANG CHỜ</span></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap main-content">
+      <section class="search-panel" id="search" aria-labelledby="search-title">
+        <div class="section-top">
+          <div>
+            <p class="eyebrow">BƯỚC 01 · CHỌN HÀNH TRÌNH</p>
+            <h2 id="search-title">Bạn muốn đi đâu?</h2>
+          </div>
+          <span class="badge"><span aria-hidden="true">●</span> Giá vé minh họa</span>
+        </div>
+        <form id="search-form">
+          <fieldset class="trip-options">
+            <legend class="sr-only">Loại hành trình</legend>
+            <label><input type="radio" name="trip" value="oneway" checked><span>Một chiều</span></label>
+            <label><input type="radio" name="trip" value="roundtrip"><span>Khứ hồi</span></label>
+          </fieldset>
+          <div class="search-grid">
+            <div class="field">
+              <label for="origin">Điểm đi</label>
+              <select id="origin" required>
+                <option value="HAN">Hà Nội · HAN</option>
+                <option value="SGN">TP. Hồ Chí Minh · SGN</option>
+                <option value="DAD">Đà Nẵng · DAD</option>
+                <option value="PQC">Phú Quốc · PQC</option>
+                <option value="CXR">Nha Trang · CXR</option>
+                <option value="DLI">Đà Lạt · DLI</option>
+              </select>
+            </div>
+            <button type="button" id="swap" class="swap" aria-label="Đổi điểm đi và điểm đến" title="Đổi điểm đi và điểm đến">⇄</button>
+            <div class="field">
+              <label for="destination">Điểm đến</label>
+              <select id="destination" required>
+                <option value="SGN">TP. Hồ Chí Minh · SGN</option>
+                <option value="HAN">Hà Nội · HAN</option>
+                <option value="DAD">Đà Nẵng · DAD</option>
+                <option value="PQC">Phú Quốc · PQC</option>
+                <option value="CXR">Nha Trang · CXR</option>
+                <option value="DLI">Đà Lạt · DLI</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="departure">Ngày đi</label>
+              <input id="departure" name="departure" type="date" required>
+            </div>
+            <div class="field" id="return-field" hidden>
+              <label for="return-date">Ngày về</label>
+              <input id="return-date" name="returnDate" type="date" disabled>
+            </div>
+            <div class="field">
+              <label for="passengers">Hành khách</label>
+              <select id="passengers">
+                <option value="1">1 người lớn</option>
+                <option value="2">2 người lớn</option>
+                <option value="3">3 người lớn</option>
+                <option value="4">4 người lớn</option>
+                <option value="5">5 người lớn</option>
+                <option value="6">6 người lớn</option>
+                <option value="7">7 người lớn</option>
+                <option value="8">8 người lớn</option>
+                <option value="9">9 người lớn</option>
+              </select>
+            </div>
+            <button class="button button-primary search-button" type="submit">Tìm chuyến bay <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="search-helper">Chọn ngày và tuyến để xem các phương án mẫu. Chưa kết nối giá hoặc chỗ của hãng hàng không.</p>
+          <p id="promo-note" class="promo-note" role="status" hidden></p>
+          <p id="search-error" class="error" role="alert" hidden></p>
+        </form>
+      </section>
+
+      <section class="benefits" aria-label="Quy trình tìm chuyến bay">
+        <article><span>01</span><div><h3>Chọn hành trình</h3><p>Điểm đi, điểm đến và ngày bay trong một khung.</p></div></article>
+        <article><span>02</span><div><h3>Xem chuyến gợi ý</h3><p>So sánh giờ bay và giá mẫu theo nhu cầu.</p></div></article>
+        <article><span>03</span><div><h3>Chọn chuyến phù hợp</h3><p>Xem thông tin trước khi gửi yêu cầu tư vấn.</p></div></article>
+      </section>
+
+      <section class="section results-section" id="results" aria-labelledby="results-title" hidden>
+        <div class="section-top results-heading">
+          <div>
+            <p class="eyebrow">BƯỚC 02 · CHỌN GIỜ BAY</p>
+            <h2 id="results-title">Chuyến bay gợi ý</h2>
+          </div>
+          <p id="result-caption" class="result-caption" aria-live="polite"></p>
+        </div>
+        <div class="results-controls">
+          <label for="sort">Sắp xếp</label>
+          <select id="sort">
+            <option value="price">Giá thấp trước</option>
+            <option value="time">Giờ đi sớm trước</option>
+          </select>
+        </div>
+        <h3 class="leg-title">Chiều đi</h3>
+        <div id="outbound-list" class="flight-list" aria-live="polite"></div>
+        <div id="inbound-section" hidden>
+          <h3 class="leg-title">Chiều về</h3>
+          <div id="inbound-list" class="flight-list" aria-live="polite"></div>
+        </div>
+        <p class="sample-disclaimer">Giá hiển thị là giá minh họa/người lớn/chặng. Hãng, mã chuyến, giờ bay và ưu đãi đều là dữ liệu mô phỏng.</p>
+        <div id="selection" class="selection" hidden>
+          <div>
+            <h3>Hành trình đã chọn</h3>
+            <div id="selection-details"></div>
+            <p id="selection-total" class="selection-total"></p>
+            <p class="small muted">Chọn chuyến chưa tạo đơn, giữ chỗ hoặc xác nhận giá.</p>
+          </div>
+          <button id="use-selection" class="button button-primary" type="button">Gửi yêu cầu hành trình này →</button>
+        </div>
+      </section>
+
+      <section class="destinations" id="destinations" aria-labelledby="destinations-title">
+        <div class="section-top destination-heading">
+          <div>
+            <p class="eyebrow">BƯỚC 03 · ĐIỀU BẠN MONG CHỜ</p>
+            <h2 id="destinations-title">Chọn một miền để thương</h2>
+          </div>
+          <p class="section-aside">Sáu điểm đến, sáu nhịp cảm hứng khác nhau.<br>Bấm vào nơi khiến bạn muốn đi nhất.</p>
+        </div>
+        <div class="destination-grid">
+          <article class="destination-card city-han">
+            <button class="destination-card__button" type="button" data-city="HAN" aria-label="Khám phá Hà Nội">
+              <span class="destination-art destination-art--hanoi" role="img" aria-label="Minh họa phố cổ Hà Nội"></span>
+              <span class="destination-info"><small>MIỀN BẮC · 01</small><strong>Hà Nội <span aria-hidden="true">↗</span></strong><span>Phố cổ, hồ Gươm và những buổi sáng chậm rãi.</span><span class="destination-link">Khám phá điểm đến</span></span>
+            </button>
+          </article>
+          <article class="destination-card city-sgn">
+            <button class="destination-card__button" type="button" data-city="SGN" aria-label="Khám phá Thành phố Hồ Chí Minh">
+              <span class="destination-art destination-art--saigon" role="img" aria-label="Minh họa đường chân trời Thành phố Hồ Chí Minh"></span>
+              <span class="destination-info"><small>MIỀN NAM · 02</small><strong>TP. Hồ Chí Minh <span aria-hidden="true">↗</span></strong><span>Nhịp sống sôi động, quán nhỏ và món ngon miền Nam.</span><span class="destination-link">Khám phá điểm đến</span></span>
+            </button>
+          </article>
+          <article class="destination-card city-dad">
+            <button class="destination-card__button" type="button" data-city="DAD" aria-label="Khám phá Đà Nẵng">
+              <span class="destination-art destination-art--danang" role="img" aria-label="Minh họa biển Đà Nẵng"></span>
+              <span class="destination-info"><small>MIỀN TRUNG · 03</small><strong>Đà Nẵng <span aria-hidden="true">↗</span></strong><span>Biển xanh, cầu Rồng và những chuyến đi thong thả.</span><span class="destination-link">Khám phá điểm đến</span></span>
+            </button>
+          </article>
+          <article class="destination-card city-pqc">
+            <button class="destination-card__button" type="button" data-city="PQC" aria-label="Khám phá Phú Quốc">
+              <span class="destination-art destination-art--phuquoc" role="img" aria-label="Minh họa biển đảo Phú Quốc lúc hoàng hôn"></span>
+              <span class="destination-info"><small>ĐẢO NGỌC · 04</small><strong>Phú Quốc <span aria-hidden="true">↗</span></strong><span>Bãi cát mịn, hoàng hôn biển ngọc và hải sản tươi.</span><span class="destination-link">Khám phá điểm đến</span></span>
+            </button>
+          </article>
+          <article class="destination-card city-cxr">
+            <button class="destination-card__button" type="button" data-city="CXR" aria-label="Khám phá Nha Trang">
+              <span class="destination-art destination-art--nhatrang" role="img" aria-label="Minh họa vịnh biển Nha Trang"></span>
+              <span class="destination-info"><small>VỊNH BIỂN · 05</small><strong>Nha Trang <span aria-hidden="true">↗</span></strong><span>Vịnh biển rực nắng, bãi cát dài và hải trình đảo.</span><span class="destination-link">Khám phá điểm đến</span></span>
+            </button>
+          </article>
+          <article class="destination-card city-dli">
+            <button class="destination-card__button" type="button" data-city="DLI" aria-label="Khám phá Đà Lạt">
+              <span class="destination-art destination-art--dalat" role="img" aria-label="Minh họa đồi thông Đà Lạt trong sương"></span>
+              <span class="destination-info"><small>CAO NGUYÊN · 06</small><strong>Đà Lạt <span aria-hidden="true">↗</span></strong><span>Không khí se lạnh, đồi thông mờ sương và góc quán yên bình.</span><span class="destination-link">Khám phá điểm đến</span></span>
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section class="request-panel" id="ticket-request" aria-labelledby="request-title">
+        <div>
+          <p class="eyebrow">BƯỚC 04 · GỬI YÊU CẦU TƯ VẤN</p>
+          <h2 id="request-title">Tiếp tục hành trình của bạn</h2>
+          <p class="muted">Yêu cầu chỉ được lưu khi chạy máy chủ cục bộ. Gửi yêu cầu chưa phải đặt vé; không có thông báo tự động.</p>
+          <p id="server-status" class="server-status" role="status">Đang kiểm tra kết nối máy chủ…</p>
+          <p class="muted small">Chỉ nhập thông tin liên hệ cần thiết. Không gửi thông tin thẻ, căn cước hoặc hộ chiếu.</p>
+        </div>
+        <form id="request-form">
+          <div class="request-grid">
+            <div class="field"><label for="request-name">Họ tên</label><input id="request-name" name="name" autocomplete="name" minlength="2" maxlength="100" required></div>
+            <div class="field"><label for="request-phone">Số điện thoại</label><input id="request-phone" name="phone" type="tel" autocomplete="tel" maxlength="25" required></div>
+            <div class="field"><label for="request-origin">Điểm đi</label><select id="request-origin" name="origin"><option value="HAN">Hà Nội</option><option value="SGN">TP. Hồ Chí Minh</option><option value="DAD">Đà Nẵng</option><option value="PQC">Phú Quốc</option><option value="CXR">Nha Trang</option><option value="DLI">Đà Lạt</option></select></div>
+            <div class="field"><label for="request-destination">Điểm đến</label><select id="request-destination" name="destination"><option value="SGN">TP. Hồ Chí Minh</option><option value="HAN">Hà Nội</option><option value="DAD">Đà Nẵng</option><option value="PQC">Phú Quốc</option><option value="CXR">Nha Trang</option><option value="DLI">Đà Lạt</option></select></div>
+            <div class="field"><label for="request-departure">Ngày đi</label><input id="request-departure" name="departureDate" type="date" required></div>
+            <div class="field"><label for="request-return">Ngày về (nếu khứ hồi)</label><input id="request-return" name="returnDate" type="date"></div>
+            <div class="field"><label for="request-passengers">Số người lớn</label><input id="request-passengers" name="passengers" type="number" min="1" max="9" step="1" value="1" required></div>
+          </div>
+          <label class="consent"><input name="consent" type="checkbox" required><span>Tôi đồng ý lưu thông tin trên vào máy chủ để xử lý yêu cầu tư vấn này.</span></label>
+          <button id="request-submit" class="button button-primary" type="submit" disabled>Gửi yêu cầu</button>
+          <p id="request-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="eyebrow">VỀ BẢNH FULI</p>
+          <h2 id="about-title">Một góc nhỏ để<br><em>mơ chuyến đi xa.</em></h2>
+        </div>
+        <div>
+          <p>Dự án giao diện tìm chuyến bay nội địa, ưu tiên thao tác rõ ràng và trải nghiệm trên điện thoại.</p>
+          <p class="muted">Các chuyến bay, giá, mã ưu đãi và thẻ hành trình là nội dung minh họa. Chưa kết nối hãng, thanh toán hay hệ thống đặt chỗ thật.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="#main">BẢNH FULI</a>
+      <p>Bay cùng Bảnh · Bay cùng Bố</p>
+      <div class="footer-bottom"><span>Website minh họa giao diện đặt vé máy bay · 2026</span><a href="#ticket-request">Gửi yêu cầu</a><button class="link-button" id="footer-promo" type="button">Xem ưu đãi</button></div>
+    </div>
+  </footer>
+  <button id="floating-search" class="button button-primary floating-search" type="button" hidden>Tìm chuyến bay ↑</button>
+  <p class="sr-only" id="live-status" role="status" aria-live="polite"></p>
+
+  <dialog id="promo-dialog" class="site-dialog" aria-labelledby="promo-title" aria-describedby="promo-description">
+    <form method="dialog" class="dialog-close-form"><button class="dialog-close" id="close-promo" aria-label="Đóng ưu đãi">×</button></form>
+    <div class="dialog-content promo-content">
+      <p class="eyebrow">MỘT CHÚT NIỀM VUI</p>
+      <h2 id="promo-title">Ưu đãi cho<br><em>chuyến đi trong mơ.</em></h2>
+      <p id="promo-description">Mã giảm giá minh họa áp dụng giảm 10% trên giá chuyến bay mẫu. Không phải ưu đãi thật, không áp dụng thanh toán.</p>
+      <div class="promo-code"><span>MÃ ƯU ĐÃI</span><strong>BANHFULI10</strong></div>
+      <button class="button button-primary" id="promo-action" type="button">Áp dụng mã &amp; tìm chuyến <span aria-hidden="true">→</span></button>
+      <label class="consent promo-dismiss"><input id="hide-promo" type="checkbox"><span>Không tự hiện lại trong phiên này</span></label>
+    </div>
+  </dialog>
+
+  <dialog id="destination-dialog" class="site-dialog destination-dialog" aria-labelledby="destination-dialog-title">
+    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Đóng chi tiết điểm đến">×</button></form>
+    <div class="dialog-content">
+      <p class="eyebrow" id="destination-region">ĐIỂM ĐẾN GỢI Ý</p>
+      <h2 id="destination-dialog-title"></h2>
+      <p id="destination-description"></p>
+      <button class="button button-primary" id="destination-search" type="button">Tìm chuyến đến đây <span aria-hidden="true">→</span></button>
+    </div>
+  </dialog>
+
+  <dialog id="flight-dialog" class="site-dialog flight-dialog" aria-labelledby="flight-dialog-title">
+    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Đóng thông tin chuyến bay">×</button></form>
+    <div class="dialog-content">
+      <p class="eyebrow">THÔNG TIN CHUYẾN BAY MINH HỌA</p>
+      <h2 id="flight-dialog-title">Chuyến bay của bạn</h2>
+      <div id="flight-confirmation" class="flight-confirmation"></div>
+      <p class="dialog-note">Thông tin và giá chỉ là dữ liệu mẫu. Lựa chọn không giữ chỗ, tạo đặt chỗ hoặc xác nhận giá.</p>
+      <button class="button button-primary" id="close-flight-dialog" type="button">Đã hiểu</button>
+    </div>
+  </dialog>
+</body>
+</html>

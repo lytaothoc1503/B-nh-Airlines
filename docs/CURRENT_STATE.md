@@ -1,12 +1,20 @@
-# Trạng thái hiện tại — 1.1
-## Đã triển khai
-Giao diện responsive, minh họa CSS, hiệu ứng anime.js cục bộ có hỗ trợ reduced motion, popup có X/Escape,
-chuyến mẫu một chiều/khứ hồi, sắp xếp giá/giờ, chọn chuyến và tổng tiền,
-điền hành trình vào yêu cầu, API lưu SQLite, validation máy chủ,
-chống trùng theo khóa biểu mẫu, giới hạn POST cục bộ, whitelist tệp công khai.
-## Chưa triển khai
-Tài khoản, quản trị, xử lý yêu cầu, email/SMS, API hãng, tồn chỗ, thanh toán thật,
-chọn ghế/hành lý, đổi/hủy/hoàn tiền, triển khai production.
-## Kiểm thử
-Xem TEST_RESULTS.md cho kết quả kiểm tra tự động trong môi trường tạo bộ mã.
-Chưa kiểm thử trình duyệt đồ họa, thiết bị thật, Windows hoặc bảo mật độc lập.
+# Trạng thái hiện tại — 1.2
+
+## Đã hoàn tất
+
+- Trang chủ có tiêu đề/hero mới và sáu thẻ điểm đến; hộp thoại điểm đến vẫn dẫn về biểu mẫu tìm chuyến hiện có.
+- Giữ tìm chuyến một chiều/khứ hồi, sắp xếp, chọn chuyến, thông tin chuyến bay và gửi yêu cầu tư vấn.
+- Máy chủ cục bộ chấp nhận sáu mã sân bay; yêu cầu tiếp tục được kiểm tra và lưu SQLite, không lưu giá/chuyến mẫu.
+- `BANHFULI10` giảm 10% trên giá mẫu ở trình duyệt; không phải ưu đãi, báo giá hoặc thanh toán thật.
+- Có responsive desktop/điện thoại, minh họa CSS, Anime.js cục bộ và hỗ trợ reduced motion.
+- Luồng điểm đến, tìm chuyến một chiều/khứ hồi, thông tin chuyến, mã mẫu và kiểm tra mobile đã chạy; xem [TEST_RESULTS.md](./TEST_RESULTS.md).
+
+## Còn thiếu
+
+- Chưa xác nhận trên điện thoại vật lý hoặc qua kiểm thử bảo mật production.
+- Tài khoản, quản trị yêu cầu, email/SMS, API hãng, tồn chỗ, thanh toán, ghế/hành lý và đổi/hủy/hoàn tiền chưa triển khai.
+
+## Đang bị chặn
+
+- Chưa thể đưa biểu mẫu tiếp nhận yêu cầu lên production: Cloudflare Pages hiện chỉ phục vụ tệp tĩnh, không chạy `server.py` hoặc SQLite. Không thu thập thông tin liên hệ trên bản Pages.
+- Triển khai production cần backend riêng, xác thực/phân quyền, chính sách dữ liệu và kiểm thử bảo mật trước khi nhận thông tin khách hàng.
